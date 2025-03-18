@@ -1,11 +1,14 @@
 package huffman
 
-import "container/heap"
+import (
+	"container/heap"
+)
 
 type HuffmanNode struct {
 	frequency int
 	val       byte
 	index     int
+	parent    *HuffmanNode
 	left      *HuffmanNode
 	right     *HuffmanNode
 }
@@ -73,6 +76,8 @@ func BuildTree(pq *PriorityQueue) *HuffmanNode {
 			right:     nodeB,
 			frequency: nodeA.frequency + nodeB.frequency,
 		}
+		nodeA.parent = joinedNode
+		nodeB.parent = joinedNode
 		pq.Push(joinedNode)
 	}
 	return pq.Pop().(*HuffmanNode)
@@ -89,7 +94,7 @@ func CompressByte(root *HuffmanNode, byte byte) {
 
 }
 
-func BuildHuffmanTable() map[byte]string {
+func BuildHuffmanTable(root *HuffmanNode) map[byte]string {
 
 }
 func Compress(root *HuffmanNode, input string) string {
