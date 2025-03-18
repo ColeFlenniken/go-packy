@@ -65,5 +65,15 @@ func BuildHeap(frequencies *[256]int) *PriorityQueue {
 }
 
 func BuildTree(pq *PriorityQueue) *HuffmanNode {
-
+	for pq.Len() > 1 {
+		var nodeA *HuffmanNode = pq.Pop().(*HuffmanNode)
+		var nodeB *HuffmanNode = pq.Pop().(*HuffmanNode)
+		var joinedNode *HuffmanNode = &HuffmanNode{
+			left:      nodeA,
+			right:     nodeB,
+			frequency: nodeA.frequency + nodeB.frequency,
+		}
+		pq.Push(joinedNode)
+	}
+	return pq.Pop().(*HuffmanNode)
 }
