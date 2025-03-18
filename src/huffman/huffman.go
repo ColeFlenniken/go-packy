@@ -77,3 +77,32 @@ func BuildTree(pq *PriorityQueue) *HuffmanNode {
 	}
 	return pq.Pop().(*HuffmanNode)
 }
+
+type BitArray struct {
+	data  *[]byte
+	nBit  int
+	nByte int
+	cap   int
+}
+
+func CompressByte(root *HuffmanNode, byte byte) {
+
+}
+
+func BuildHuffmanTable() map[byte]string {
+
+}
+func Compress(root *HuffmanNode, input string) string {
+	var data []byte = make([]byte, 1000)
+	var output BitArray = BitArray{
+		data:  &data,
+		nByte: 0,
+		nBit:  0,
+		cap:   cap(data),
+	}
+
+	for i := 0; i < len(input); i++ {
+
+	}
+
+}
